@@ -1,0 +1,42 @@
+GET http://localhost:5041/api/employee
+
+###
+GET http://localhost:5041/api/employee/24
+
+###
+POST http://localhost:5041/api/employee
+Content-Type: application/json
+
+{
+  "fullName": "Aarav Sharma",
+  "email": "aarav2.sharma@company.com",
+  "role": "Software Engineer",
+  "department": "Engineering",
+  "employmentType": "Pasdrt-time",
+  "joiningDate": "2024-03-15T00:00:00",
+  "onboardingStatus": "Completed",
+  "status": "Active"
+}
+
+
+####
+PUT http://localhost:5041/api/employee/24
+Content-Type: application/json
+
+
+{
+  "fullName": "Aarav Sharma1",
+  "email": "aarav.sharma@company.com",
+  "role": "Software Engineer",
+  "department": "Engineering",
+  "employmentType": "Part-time",
+  "joiningDate": "2024-03-15T00:00:00",
+  "onboardingStatus": "Completed",
+  "status": "Active"
+}
+
+###
+DELETE http://localhost:5041/api/employee/25
+
+###
+GET http://localhost:5089/genres
