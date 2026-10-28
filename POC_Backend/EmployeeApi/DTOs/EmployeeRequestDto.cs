@@ -15,9 +15,7 @@ public class EmployeeRequestDto
     public string Role { get; set; } = string.Empty;
 
     [Required]
-    [AllowedValues("Engineering", "Design", "Product", "HR", "Sales", "Finance",
-        ErrorMessage = "Invalid department.")]
-    public string Department { get; set; } = string.Empty;
+    public int DepartmentId { get; set; } 
 
     [Required]
     [AllowedValues("Full-time", "Part-time", "Intern", "Contractor",
@@ -25,7 +23,7 @@ public class EmployeeRequestDto
     public string EmploymentType { get; set; } = string.Empty;
 
     [Required]
-    public DateTime? JoiningDate { get; set; }
+    public DateOnly? JoiningDate { get; set; }
 
     [Required]
     [AllowedValues("Not Started", "In Progress", "Completed",
@@ -33,7 +31,11 @@ public class EmployeeRequestDto
     public string OnboardingStatus { get; set; } = string.Empty;
 
     [Required]
-    [AllowedValues("Active", "Exited", "On Leave",
+    [AllowedValues("Active", "Exited", "On Leave","Inactive",
         ErrorMessage = "Invalid status.")]
     public string Status { get; set; } = string.Empty;
+    
+    public int? ManagerId {get;set;}
+
+    public int AnnualLeavesTaken{get;set;}
 }

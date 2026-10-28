@@ -1,0 +1,11 @@
+using System;
+
+namespace EmployeeApi.DTOs;
+
+public class DepartmentResponseDto
+{
+    public int Id{get;set;}
+    
+    public string? DepartmentName{get;set;}
+
+}

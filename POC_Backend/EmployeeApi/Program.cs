@@ -8,7 +8,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("ReactApp", policy =>
         policy.WithOrigins("http://localhost:5173")   // your React dev server URL
               .AllowAnyHeader()
-              .AllowAnyMethod());
+              .AllowAnyMethod().WithExposedHeaders("X-Total-Count"));
 });
 // Add services to the container.
 builder.Services.AddControllers()
@@ -23,6 +23,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepoitory>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
