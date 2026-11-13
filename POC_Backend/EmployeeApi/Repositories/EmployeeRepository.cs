@@ -132,6 +132,9 @@ public class EmployeeRepository(AppDbContext db) : IEmployeeRepository
         if (!string.IsNullOrWhiteSpace(f.FullName) && !string.IsNullOrWhiteSpace(f.Email))
             query = query.Where(e => EF.Functions.Like(e.FullName, $"%{f.FullName.Trim()}%") || EF.Functions.Like(e.Email, $"%{f.Email.Trim()}%"));
 
+        if (!string.IsNullOrWhiteSpace(f.FullName) && string.IsNullOrWhiteSpace(f.Email))
+            query = query.Where(e => EF.Functions.Like(e.FullName, $"%{f.FullName.Trim()}%"));
+
         if (!string.IsNullOrWhiteSpace(f.DepartmentName))
             query = query.Where(e => EF.Functions.Like(e.Department!.Name, $"%{f.DepartmentName.Trim()}%"));
 

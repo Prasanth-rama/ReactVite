@@ -21,11 +21,11 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,Slide
 } from '@mui/material'
 import { employmentTypes, onboardingOptions, statusOptions } from './constants'
 import { getDepartments, getmangersOfdepartments } from './EmpoyeeApi'
-  const EmployeeForm = ({ initialData, otherEmails, onSave, onCancel }) => {
+const EmployeeForm = ({ initialData, otherEmails, onSave, onCancel }) => {
   const [formData, setFormData] = useState(initialData)
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(true);
@@ -102,17 +102,16 @@ import { getDepartments, getmangersOfdepartments } from './EmpoyeeApi'
       return
     }
 
-    const result =await onSave({
+    const result = await onSave({
       ...formData,
       FullName: formData.FullName.trim(),
       Email: formData.Email.trim(),
       Role: formData.Role.trim(),
     })
-    if (!result.ok) 
-    {
-      console.log("Error List:",result.errorlist)
-      if(result.errorlist.Email)
-        setErrors(result.errorlist); 
+    if (!result.ok) {
+      console.log("Error List:", result.errorlist)
+      if (result.errorlist.Email)
+        setErrors(result.errorlist);
       else
         setError(result.errorlist.general)
     }  // renders in the <Alert>
@@ -161,7 +160,28 @@ import { getDepartments, getmangersOfdepartments } from './EmpoyeeApi'
   }
 
   return (
-    <Dialog open onClose={onCancel} fullWidth maxWidth="sm">
+    <Dialog open onClose={onCancel} fullWidth maxWidth="sm" sx={{
+      "& .MuiDialog-container": {
+        justifyContent: "flex-end",   // push to the right edge
+        alignItems: "stretch",        // full height
+       
+      },
+    }}
+      direction="left"
+      slotProps={{
+        paper: {
+          sx: {
+            m: 0,
+            width: { xs: "100%", sm: 420 },
+            maxWidth: "100%",
+            height: "100%",
+            maxHeight: "100%",
+            borderRadius: 0,
+          },
+        },
+      }}
+
+    >
       <form onSubmit={handleSubmit} noValidate>
         <DialogTitle>{isEdit ? 'Edit Employee' : 'Add Employee'}</DialogTitle>
         {error && (

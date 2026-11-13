@@ -1,42 +1,65 @@
-GET http://localhost:5041/api/employee
+POST http://localhost:5041/api/leaves
+Content-Type: application/json
+
+
+{
+  "EmployeeId": 20,
+  "StartDate": "2026-11-01",
+  "EndDate": "2026-11-10",
+  "Comments": "Sick Leave"
+
+}
 
 ###
-GET http://localhost:5041/api/employee/24
+GET http://localhost:5041/api/employee/summary
 
 ###
 POST http://localhost:5041/api/employee
 Content-Type: application/json
 
 {
-  "fullName": "Aarav Sharma",
-  "email": "aarav2.sharma@company.com",
-  "role": "Software Engineer",
-  "department": "Engineering",
-  "employmentType": "Pasdrt-time",
+  "fullName": "Namaha",
+  "email": "aarav5.sharm1a@company.com",
+  "role": "HR",
+  "departmentid": 1,
+  "employmentType": "Full-time",
   "joiningDate": "2024-03-15T00:00:00",
   "onboardingStatus": "Completed",
-  "status": "Active"
+  "status": "Active",
+  "AnnualLeavesTaken":0
 }
+
 
 
 ####
-PUT http://localhost:5041/api/employee/24
+PUT http://localhost:5041/api/employee/2
 Content-Type: application/json
 
-
 {
-  "fullName": "Aarav Sharma1",
-  "email": "aarav.sharma@company.com",
+  "fullName": "Namaha",
+  "email": "aarav4.sharm1a@company.com",
   "role": "Software Engineer",
-  "department": "Engineering",
-  "employmentType": "Part-time",
+  "departmentid": 4,
+  "employmentType": "Full-time",
   "joiningDate": "2024-03-15T00:00:00",
   "onboardingStatus": "Completed",
-  "status": "Active"
+  "status": "Active",
+  "managerId":5,
+  "AnnualLeavesTaken":5
+  
 }
 
 ###
-DELETE http://localhost:5041/api/employee/25
+DELETE http://localhost:5041/api/employee/1
 
 ###
 GET http://localhost:5089/genres
+
+
+###
+POST http://localhost:5041/api/department
+Content-Type: application/json
+{
+  "DepartmentName":"Finance"
+}
+

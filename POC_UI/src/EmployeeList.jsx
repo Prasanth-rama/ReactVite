@@ -96,7 +96,7 @@ const EmployeeList = () => {
             })
                 .then(data => {
                     if (cancelled) return
-                    setRows(data.items)
+                    setRows(data.data)
                     setRowCount(data.totalCount)
                     console.log("row Count:", data.totalCount)
                 })
